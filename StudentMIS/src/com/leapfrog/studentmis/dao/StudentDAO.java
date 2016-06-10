@@ -17,7 +17,7 @@ public interface StudentDAO {
     boolean delete(int id);
     ArrayList<Student> getAll();
     Student getById(int id);
-    ArrayList<Student> getByAny();
+   void getByAny(String param);
     Student getByEmail(String email);
     boolean checkEmail(String email);
     

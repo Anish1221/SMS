@@ -56,7 +56,7 @@ public class Student {
         this.email = email;
     }
 
-    public String getAll() {
+    public String getBeh() {
         return (id + "," + firstName + "," + lastName + "," + email);
         
     }

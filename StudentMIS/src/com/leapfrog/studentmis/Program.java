@@ -9,6 +9,7 @@ import com.leapfrog.studentmis.dao.StudentDAO;
 import com.leapfrog.studentmis.dao.impl.StudentDAOImpl;
 import com.leapfrog.studentmis.entity.Student;
 import com.sun.image.codec.jpeg.JPEGQTable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -75,7 +76,7 @@ public class Program {
                     while (true) {
                         System.out.println("Enter id to delete:");
                         int delid = input.nextInt();
-                        System.out.println(stdDAO.getById(delid).getAll());
+                        System.out.println(stdDAO.getById(delid).getBeh());
                         System.out.println("Are you sure to delete id " + delid + " [y/n]");
                         String decide = input.next();
                         if (!decide.equalsIgnoreCase("n")) {
@@ -107,7 +108,7 @@ public class Program {
                         int srid = input.nextInt();
                         Student a = stdDAO.getById(srid);
                         if (a != null) {
-                            System.out.println(a.getAll());
+                            System.out.println(a.getBeh());
                         } else {
                             System.out.println("Not Found");
                         }
@@ -121,7 +122,18 @@ public class Program {
                     break;
 
                 case 5:
+                    while (true) {
+                        System.out.print("To Search Data-> Enter any field :  ");
+                        String any = input.next();
+                        stdDAO.getByAny(any);
 
+                        System.out.println("Do you want to Search again??:[Y/N]");
+                        String ch = input.next();
+                        if (ch.equalsIgnoreCase("n")) {
+                            break;
+                        }
+
+                    }
                     break;
 
                 case 6:
@@ -130,10 +142,11 @@ public class Program {
                         String eml = input.next();
                         Student e = stdDAO.getByEmail(eml);
                         if (e != null) {
-                            System.out.println(e.getAll());
+                            System.out.println(e.getBeh());
                         } else {
                             System.out.println("Not Found");
                         }
+
                         System.out.println("Do you want to Search by email again??:[Y/N]");
                         String ch = input.next();
                         if (ch.equalsIgnoreCase("n")) {

@@ -40,7 +40,6 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public ArrayList<Student> getAll() {
         return stdlist;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -54,15 +53,24 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public ArrayList<Student> getByAny() {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void getByAny(String param) {
+        int count = 0;
+        for (Student s : stdlist) {
+            if (s != null && ((s.getFirstName().equalsIgnoreCase(param)) ||(s.getLastName().equalsIgnoreCase(param)) ||(s.getEmail().equalsIgnoreCase(param))) ){
+                System.out.println(s.getBeh());
+                 count++;       }
+            
+        }
+        if(count==0){
+            System.out.println("NOt Found");
+        }
+        
     }
 
     @Override
     public Student getByEmail(String email) {
         for (Student s : stdlist) {
-            if(s != null && s.getEmail() == email) {
+            if (s != null && s.getEmail() == email) {
                 return s;
             }
         }
